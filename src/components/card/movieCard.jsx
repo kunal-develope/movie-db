@@ -6,14 +6,16 @@ const MovieCard = ({ movieDetails }) => {
   return (
     <div>
       <Card style={{ width: "18rem" }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
+        <Card.Img
+          variant="top"
+          src={
+            "https://image.tmdb.org/t/p/original" + movieDetails?.poster_path
+          }
+        />
         <Card.Body>
-          <Card.Title>{movieDetails}</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
+          <Card.Title>{movieDetails?.original_title}</Card.Title>
+          <Card.Text>{movieDetails?.vote_average}</Card.Text>
+          <Button variant="primary">{movieDetails.release_date}</Button>
         </Card.Body>
       </Card>
     </div>
