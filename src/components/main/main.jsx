@@ -10,13 +10,17 @@ import movieService from "../../services/movieService";
 
 const Main = () => {
   const [movieList, setMovieList] = useState([]);
+  const [tabName, setTabName] = useState("top_rated");
 
   useEffect(() => {
     if (!movieList.length) getData();
-  }, [movieList]);
+  }, [movieList, tabName]);
 
+  useEffect(() => {
+    getData();
+  }, [tabName]);
   const getData = async () => {
-    movieService("/movie/top_rated")
+    movieService("/movie/" + tabName)
       .then((resp) => {
         setMovieList(resp?.results);
       })
@@ -27,7 +31,12 @@ const Main = () => {
 
   return (
     <div>
-      <Header />
+      <Header
+        getTabName={(value) => {
+          console.log(value);
+          setTabName(value);
+        }}
+      />
       <Container>
         <Row>
           {movieList.map((movie) => {
