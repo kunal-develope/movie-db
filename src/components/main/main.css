@@ -1,3 +1,70 @@
 .Card-col{
     margin: 10px;
 }
+
+/* main.css */
+
+.Card-col {
+  margin-bottom: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.Card-col:hover {
+  transform: scale(1.05);
+}
+
+/* main.css */
+
+.Container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .Container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://c4.wallpaperflare.com/wallpaper/108/140/869/digital-digital-art-artwork-fantasy-art-drawing-hd-wallpaper-thumb.jpg");
+    background-size: cover;
+    filter: blur(5px);
+    z-index: -1;
+  }
+  
+  .Container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: -1;
+  }
+  
+  .Row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .Row {
+      gap: 10px;
+      padding: 10px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .Row {
+      gap: 5px;
+      padding: 5px;
+    }
+  }
+  
+

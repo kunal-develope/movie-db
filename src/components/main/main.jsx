@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "./main.css";
+import movieService from "../../services/movieService";
 
 const Main = () => {
   const [movieList, setMovieList] = useState([]);
@@ -15,24 +16,13 @@ const Main = () => {
   }, [movieList]);
 
   const getData = async () => {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkYTRhMjRhNWM0NjEyOTRjZWJiZGFlYTcxOGY3NWVkOSIsInN1YiI6IjY0NmNhODQ3ZDE4NTcyMDE2MTkzNTE1YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Zi0v-Ch742Axssum3MvZ27GTx6hUY6SA55GrJXYRd88",
-      },
-    };
-    await fetch(
-      "https://api.themoviedb.org/3/movie/popular?api_key=da4a24a5c461294cebbdaea718f75ed9",
-      options
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        console.log(json);
-        setMovieList(json?.results);
+    movieService("/movie/top_rated")
+      .then((resp) => {
+        setMovieList(resp?.results);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
