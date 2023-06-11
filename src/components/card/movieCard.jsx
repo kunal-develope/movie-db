@@ -1,11 +1,19 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { useNavigate } from "react-router-dom";
 
 const MovieCard = ({ movieDetails }) => {
+  const navigate = useNavigate();
+  const openMovieDetails = (id) => {
+    navigate("/movie-details", { state: { id } });
+  };
   return (
     <div>
-      <Card style={{ width: "18rem" }}>
+      <Card
+        style={{ width: "18rem" }}
+        onClick={(e) => openMovieDetails(movieDetails.id)}
+      >
         <Card.Img
           variant="top"
           src={
