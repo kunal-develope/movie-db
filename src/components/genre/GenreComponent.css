@@ -1,0 +1,12 @@
+.genres-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.genre-text {
+  margin: 5px;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 0px 7px 2px 7px;
+  font-size: 12px;
+}
